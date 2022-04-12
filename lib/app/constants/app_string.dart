@@ -1,0 +1,15 @@
+String products= "Products";
+String createProduct = "Create Product";
+String searchProducts = "Search Products";
+String name = "Name";
+String enterName = "Enter Name";
+String quantity = "Quantity";
+String enterQuantity = "Enter Quantity";
+String description = "Description";
+String enterDescription = "Enter Description";
+String price = "Price";
+String enterPrice = "Enter Price";
+String image = "Image";
+String noData = "No Data";
+String tapToSelectImage = "Tap to select image";
+String pullToRefresh = "Pull To Refresh";

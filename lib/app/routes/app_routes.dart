@@ -1,0 +1,16 @@
+part of 'app_pages.dart';
+// DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
+
+abstract class Routes {
+  Routes._();
+  static const HOME = _Paths.HOME;
+  static const CREATE_PRODUCT = _Paths.CREATE_PRODUCT;
+  static const SEARCH_PRODUCT = _Paths.SEARCH_PRODUCT;
+}
+
+abstract class _Paths {
+  _Paths._();
+  static const HOME = '/home';
+  static const CREATE_PRODUCT = '/create-product';
+  static const SEARCH_PRODUCT = '/search-product';
+}
