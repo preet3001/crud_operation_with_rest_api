@@ -4,7 +4,7 @@ class Client {
   Dio init() {
     Dio _dio = Dio();
     _dio.interceptors.add(ApiInterceptors());
-    _dio.options.baseUrl = "http://designoweb.work/crud/";
+    _dio.options.baseUrl = "https://fakestoreapi.com/";
     return _dio;
   }
 }

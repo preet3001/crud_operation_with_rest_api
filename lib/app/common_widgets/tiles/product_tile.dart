@@ -25,10 +25,10 @@ class ProductTile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(name +": "+productModel.prodName,style: black15Style,),
-              Text(price +": "+productModel.prodPrice,style: black15Style,),
-              Text(quantity +": "+productModel.prodQty,style: black15Style,),
-              Text(description +": "+productModel.prodDesc,style: black15Style,),
+              Text(name +": "+productModel.title,style: black15Style,),
+              Text(price +": "+productModel.price.toString(),style: black15Style,),
+              Text(quantity +": "+1.toString(),style: black15Style,),
+              Text(description +": "+productModel.description,style: black15Style,),
             ],
           ),
         )

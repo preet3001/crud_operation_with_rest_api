@@ -14,9 +14,9 @@ class ProductRepository {
 
   Future<List<ProductModel>> getProductList() async {
     try {
-      Response r = await client.get("/Api/getProductData");
+      Response r = await client.get("/products");
       if (r.statusCode == 200) {
-        return productModelFromJson(jsonEncode(r.data["data"]));
+        return productModelFromJson(jsonEncode(r.data));
       } else {
         return Future.error("msg");
       }
@@ -25,12 +25,13 @@ class ProductRepository {
     }
   }
 
-  Future<List<SearchedProductModel>> findProductByName({required String name}) async {
+  Future<List<SearchedProductModel>> findProductByName(
+      {required String name}) async {
     var data = FormData.fromMap({"name": name});
     try {
       Response r = await client.post("/Api/getProductByName", data: data);
       if (r.statusCode == 200) {
-        return searchedProductModelFromJson(jsonEncode(r.data["data"]??[]));
+        return searchedProductModelFromJson(jsonEncode(r.data["data"] ?? []));
       } else {
         return Future.error("msg");
       }
@@ -46,24 +47,24 @@ class ProductRepository {
       required String prodQty,
       required String prodDesc,
       required String imagePath}) async {
-
-    CommonLoader.showLoading();    
-    var data = FormData.fromMap({
-      "prod_name": prodName,
-      "prod_price": prodPrice,
-      "prod_qty": prodQty,
-      "prod_desc": prodDesc,
-      "image": await MultipartFile.fromFile(imagePath)
-    });
+    CommonLoader.showLoading();
+    var data = {
+      "title": prodName,
+      "price": prodPrice,
+      "description": prodDesc,
+      "image": "https://i.pravatar.cc",
+      "category": "electronic",
+    };
     try {
-      Response r = await client.post("/Api/insertProductData",data: data);
+      Response r = await client.post("/products", data: data);
       CommonLoader.hideLoading();
-      if(r.statusCode==200){
-        CommonLoader.showSuccessDialog(description: "Product Created Sucessfully");
-      }else{
+      if (r.statusCode == 200) {
+        CommonLoader.showSuccessDialog(
+            description: "Product Created Sucessfully");
+      } else {
         CommonLoader.showErrorDialog(description: r.data["errors"]);
       }
-    }on DioError catch (e) {
+    } on DioError catch (e) {
       log(e.response.toString());
       CommonLoader.hideLoading();
       CommonLoader.showErrorDialog(description: e.message);

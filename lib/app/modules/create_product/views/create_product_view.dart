@@ -24,19 +24,19 @@ class CreateProductView extends GetView<CreateProductController> {
             physics: BouncingScrollPhysics(),
             child: Column(
               children: [
-                InkWell(
-                  onTap: (){
-                    controller.pickImage();
-                  },
-                  child: Obx(
-                    ()=> controller.image.value.path ==""?Column(
-                      children: [
-                        Icon(Icons.image_search,size: 40.sp,color: grey400,),
-                        Text(tapToSelectImage,style:controller.image.value.path ==""&&controller.isSubmitTapped.value?red12Style: grey12Style,),
-                      ],
-                    ):Image.file(controller.image.value,width: 35.w,),
-                  ),
-                ),
+                // InkWell(
+                //   onTap: (){
+                //     controller.pickImage();
+                //   },
+                //   child: Obx(
+                //     ()=> controller.image.value.path ==""?Column(
+                //       children: [
+                //         Icon(Icons.image_search,size: 40.sp,color: grey400,),
+                //         Text(tapToSelectImage,style:controller.image.value.path ==""&&controller.isSubmitTapped.value?red12Style: grey12Style,),
+                //       ],
+                //     ):Image.file(controller.image.value,width: 35.w,),
+                //   ),
+                // ),
                 TextFormField(
                   controller: controller.name,
                   validator: (val){
@@ -86,7 +86,7 @@ class CreateProductView extends GetView<CreateProductController> {
           
                 ElevatedButton(onPressed: (){
                   controller.isSubmitTapped.value = true;
-                  if(controller.key.currentState!.validate()&&controller.image.value.path!=""){
+                  if(controller.key.currentState!.validate()){
                     controller.callCreateProductApi();
                   }
                 }, child: Text(createProduct))
